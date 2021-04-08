@@ -1,0 +1,90 @@
+$secondary: #f0c040;
+@mixin linear_gradient($direction: left) {
+  background: linear-gradient(
+    to $direction,
+    #0f054c 0%,
+    #151b56 25%,
+    #1e3f67 50%,
+    #1e3f67 75%,
+    #21486b 100%
+  );
+}
+
+@mixin linear_gradient_animation() {
+  @keyframes animation {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  background: linear-gradient(
+    270deg,
+    #0f054c,
+    #151b56,
+    #1e3f67,
+    #1e3f67,
+    #21486b
+  );
+  background-size: 1000% 1000%;
+
+  animation: animation 3s ease infinite;
+}
+@mixin button_mix {
+  outline: none;
+  font-family: "Roboto-Bold";
+  font-weight: bold;
+  div,
+  label,
+  span {
+    font-family: "Roboto-Bold";
+    font-weight: bold;
+  }
+  background: linear-gradient(
+    to right,
+    #21486b 0%,
+    #1e3f67 50%,
+    #151b56 75%,
+    #0f054c 100%
+  );
+
+  border-radius: 20px;
+  color: white;
+  border: 1px solid white;
+  padding: 0.5rem 3rem;
+  cursor: pointer;
+  &:hover {
+    box-shadow: 0 2px 10px 5px rgba($color: $secondary, $alpha: 1);
+    border-color: #384e73;
+    @include linear_gradient_animation;
+  }
+
+  &:active {
+    border-color: #384e73;
+    box-shadow: none;
+  }
+}
+@mixin button_cancel_mix {
+  outline: none;
+  font-family: "Roboto-Bold";
+  font-weight: bold;
+  background: white;
+
+  border-radius: 20px;
+  color: $primary_color;
+  border: 1px solid $secondar;
+  padding: 0.5rem 5rem;
+  transition: all 0.5s;
+  cursor: pointer;
+
+  &:hover,
+  &:active {
+    background-color: $alt_secondary_color_1;
+    color: white;
+  }
+}

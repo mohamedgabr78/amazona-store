@@ -1,0 +1,29 @@
+.header-container {
+  .brand {
+    font-size: 3rem;
+    font-family: "Courier New", Courier, monospace;
+    font-weight: bold;
+    a {
+      color: white;
+      text-decoration: none;
+    }
+    @media only screen and (max-width: 480px) {
+      font-size: 1.8rem;
+    }
+  }
+
+  .routes {
+    font-size: 1.5rem;
+    a {
+      color: white;
+      text-decoration: none;
+      margin: 10px;
+      &:hover {
+        color: #ff8000;
+      }
+    }
+    @media only screen and (max-width: 480px) {
+      font-size: 1rem;
+    }
+  }
+}
