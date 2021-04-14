@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { detailsProduct } from "../../Actions/productActions";
@@ -8,10 +8,18 @@ import Rating from "../Products/Rating";
 import "./Product.scss";
 
 export default function ProductScreen(props) {
+  const [qty, setQty] = useState(1);
   const productDetails = useSelector((state) => state.productDetails);
   const { loading, error, product } = productDetails;
   const dispatch = useDispatch();
   const productId = props.match.params.id;
+  const selectQty = (e) => {
+    setQty(e.target.value);
+  };
+  const addToCart = () => {
+    props.history.push(`/cart/${productId}?qty=${qty}`);
+  };
+
   useEffect(() => {
     dispatch(detailsProduct(productId));
   }, [dispatch, productId]);
@@ -73,9 +81,39 @@ export default function ProductScreen(props) {
                       </div>
                     </div>
                   </li>
-                  <li>
-                    <button className="add-btn mt-3">Add to Cart</button>
-                  </li>
+                  {product.countInStock > 0 && (
+                    <>
+                      <li>
+                        <div className="row">
+                          <div></div>
+                          <div>
+                            <select
+                              value={qty}
+                              onClick={(e) => {
+                                selectQty();
+                              }}
+                            >
+                              {[...Array(product.countInStock).keys()].map(
+                                (item) => {
+                                  <option key={item + 1} value={item + 1}>
+                                    {item + 1}
+                                  </option>;
+                                }
+                              )}
+                            </select>
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <button
+                          onClick={() => addToCart()}
+                          className="add-btn mt-3"
+                        >
+                          Add to Cart
+                        </button>
+                      </li>
+                    </>
+                  )}
                 </ul>
               </div>
             </div>

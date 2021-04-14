@@ -21,4 +21,5 @@ footer {
   grid-area: footer;
   @include linear_gradient_animation;
   color: #ffffff;
+  height: 7rem;
 }
