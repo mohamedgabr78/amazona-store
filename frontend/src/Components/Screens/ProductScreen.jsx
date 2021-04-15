@@ -13,10 +13,8 @@ export default function ProductScreen(props) {
   const { loading, error, product } = productDetails;
   const dispatch = useDispatch();
   const productId = props.match.params.id;
-  const selectQty = (e) => {
-    setQty(e.target.value);
-  };
-  const addToCart = () => {
+
+  const addToCartHandler = () => {
     props.history.push(`/cart/${productId}?qty=${qty}`);
   };
 
@@ -85,20 +83,18 @@ export default function ProductScreen(props) {
                     <>
                       <li>
                         <div className="row">
-                          <div></div>
-                          <div>
+                          <div className="col-6">Qty</div>
+                          <div className="col-3">
                             <select
                               value={qty}
-                              onClick={(e) => {
-                                selectQty();
-                              }}
+                              onChange={(e) => setQty(e.target.value)}
                             >
                               {[...Array(product.countInStock).keys()].map(
-                                (item) => {
-                                  <option key={item + 1} value={item + 1}>
-                                    {item + 1}
-                                  </option>;
-                                }
+                                (x) => (
+                                  <option key={x + 1} value={x + 1}>
+                                    {x + 1}
+                                  </option>
+                                )
                               )}
                             </select>
                           </div>
@@ -106,7 +102,7 @@ export default function ProductScreen(props) {
                       </li>
                       <li>
                         <button
-                          onClick={() => addToCart()}
+                          onClick={addToCartHandler}
                           className="add-btn mt-3"
                         >
                           Add to Cart
