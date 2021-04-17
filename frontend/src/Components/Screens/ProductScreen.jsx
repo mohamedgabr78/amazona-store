@@ -82,7 +82,7 @@ export default function ProductScreen(props) {
                   {product.countInStock > 0 && (
                     <>
                       <li>
-                        <div className="row">
+                        <div className="row qty">
                           <div className="col-6">Qty</div>
                           <div className="col-3">
                             <select

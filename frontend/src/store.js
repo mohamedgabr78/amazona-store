@@ -14,7 +14,7 @@ const initialState = {
   },
 };
 const reducer = combineReducers({
-  productsList: productListReducer,
+  productList: productListReducer,
   productDetails: productDetailsReducer,
   cart: cartReducer,
 });

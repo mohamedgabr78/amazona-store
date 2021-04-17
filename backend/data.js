@@ -6,7 +6,7 @@ const data = {
       category: "Shirts",
       image:
         "https://d1kvfoyrif6wzg.cloudfront.net/assets/images/78/main/none_293740682bead165f337101213f2fbf9_2937406.JPEG",
-      price: 120,
+      price: 10,
       countInStock: 10,
       brand: "Nike",
       rating: 1,

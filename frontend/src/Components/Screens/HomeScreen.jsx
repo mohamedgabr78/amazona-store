@@ -6,13 +6,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { listProducts } from "../../Actions/productActions";
 
 export default function HomeScreen() {
-  const productsList = useSelector((state) => state.productsList);
-  const { loading, error, products } = productsList;
+  const productList = useSelector((state) => state.productList);
+  const { loading, error, products } = productList;
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(listProducts());
-  }, []);
+  }, [dispatch]);
 
   return (
     <div>
