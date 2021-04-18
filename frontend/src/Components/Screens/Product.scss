@@ -40,4 +40,16 @@
   }
 }
 
-// color: #f0c040;
+.cart-container {
+  h1 {
+    color: #f0c040;
+  }
+
+  .total {
+    @include button_mix;
+    cursor: auto;
+    button {
+      @include button_cancel_mix;
+    }
+  }
+}

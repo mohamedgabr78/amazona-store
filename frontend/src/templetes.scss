@@ -76,15 +76,14 @@ $secondary: #f0c040;
   background: white;
 
   border-radius: 20px;
-  color: $primary_color;
-  border: 1px solid $secondar;
+  color: #f0c040;
+  border: 1px solid $secondary;
   padding: 0.5rem 5rem;
   transition: all 0.5s;
   cursor: pointer;
 
-  &:hover,
-  &:active {
-    background-color: $alt_secondary_color_1;
-    color: white;
-  }
+  // &:hover,
+  // &:active {
+  //   color: white;
+  // }
 }

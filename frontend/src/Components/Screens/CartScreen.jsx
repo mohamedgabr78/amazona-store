@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { addToCart } from "../../Actions/cartActions";
+import { addToCart, removeFromCart } from "../../Actions/cartActions";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import "./Product.scss";
@@ -18,7 +18,7 @@ function CartScreen(props) {
   }, [dispatch, productId, qty]);
 
   const removeFromCartHandler = (id) => {
-    // delete action
+    dispatch(removeFromCart(id));
   };
 
   const checkoutHandler = () => {
@@ -26,7 +26,7 @@ function CartScreen(props) {
   };
   return (
     <div className="row cart-container d-flex justify-content-between">
-      <div className="col-8">
+      <div className="col-6">
         <h1>Shopping Cart</h1>
         {cartItems.length === 0 ? (
           <span>
@@ -35,14 +35,14 @@ function CartScreen(props) {
         ) : (
           <ul>
             {cartItems.map((item) => (
-              <div className="row d-flex flex-row">
+              <div className="row d-flex flex-row mt-5">
                 <li key={item.product} className="row d-flex flex-row mb-5">
                   <img src={item.image} alt={item.name} className="col-3"></img>
 
-                  <div className="col-2">
+                  <div className="col-3 mt-5">
                     <Link to={`/product/${item.product}`}>{item.name}</Link>
                   </div>
-                  <div className="col-2">
+                  <div className="col-2 mt-5">
                     <select
                       value={item.qty}
                       onChange={(e) =>
@@ -58,8 +58,8 @@ function CartScreen(props) {
                       ))}
                     </select>
                   </div>
-                  <div className="col-2">${item.price}</div>
-                  <div className="col-2">
+                  <div className="col-2 mt-5">${item.price}</div>
+                  <div className="col-2 mt-5">
                     <button
                       type="button"
                       onClick={() => removeFromCartHandler(item.product)}
@@ -74,7 +74,7 @@ function CartScreen(props) {
         )}
       </div>
       <div className="col-4">
-        <div className="card card-body">
+        <div className="row total">
           <ul>
             <li>
               <h2>
