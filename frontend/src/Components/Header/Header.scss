@@ -1,3 +1,4 @@
+@import "../../templetes.scss";
 .header-container {
   .brand {
     font-size: 3rem;
@@ -28,6 +29,10 @@
     .cart-length {
       color: #ff8000;
       font-size: 1rem;
+    }
+    .change-lang {
+      color: #ff8000;
+      cursor: pointer;
     }
   }
 }

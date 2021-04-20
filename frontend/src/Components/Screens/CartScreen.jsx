@@ -3,7 +3,9 @@ import { addToCart, removeFromCart } from "../../Actions/cartActions";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import "./Product.scss";
+import useRenderTranslationLabel from "../../translations/useRenderTranslationLabels";
 function CartScreen(props) {
+  const translationLabels = useRenderTranslationLabel();
   const productId = props.match.params.id;
   const qty = props.location.search
     ? Number(props.location.search.split("=")[1])
@@ -27,10 +29,11 @@ function CartScreen(props) {
   return (
     <div className="row cart-container d-flex justify-content-between">
       <div className="col-6">
-        <h1>Shopping Cart</h1>
+        <h1>{translationLabels.renderLabel("shopping_cart")}</h1>
         {cartItems.length === 0 ? (
           <span>
-            Cart is empty<Link to="/">Go Shopping</Link>
+            {translationLabels.renderLabel("cart_is_empty")}
+            <Link to="/">{translationLabels.renderLabel("go_shopping")}</Link>
           </span>
         ) : (
           <ul>
@@ -61,10 +64,11 @@ function CartScreen(props) {
                   <div className="col-2 mt-5">${item.price}</div>
                   <div className="col-2 mt-5">
                     <button
+                      className=""
                       type="button"
                       onClick={() => removeFromCartHandler(item.product)}
                     >
-                      Delete
+                      {translationLabels.renderLabel("delete")}
                     </button>
                   </div>
                 </li>
@@ -78,7 +82,9 @@ function CartScreen(props) {
           <ul>
             <li>
               <h2>
-                Subtotal ({cartItems.reduce((a, c) => a + c.qty, 0)} items) : $
+                {translationLabels.renderLabel("subtotal")} (
+                {cartItems.reduce((a, c) => a + c.qty, 0)}{" "}
+                {translationLabels.renderLabel("item")}) : $
                 {cartItems.reduce((a, c) => a + c.price * c.qty, 0)}
               </h2>
             </li>
@@ -89,7 +95,7 @@ function CartScreen(props) {
                 className="primary block"
                 disabled={cartItems.length === 0}
               >
-                Proceed to Checkout
+                {translationLabels.renderLabel("proceed_to_checkout")}
               </button>
             </li>
           </ul>

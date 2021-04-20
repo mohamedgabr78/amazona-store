@@ -2,12 +2,17 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { detailsProduct } from "../../Actions/productActions";
+import { useAppLanguageContext } from "../../context";
 import Error from "../Products/Error";
 import Loading from "../Products/Loading";
 import Rating from "../Products/Rating";
 import "./Product.scss";
+import useRenderTranslationLabel from "../../translations/useRenderTranslationLabels";
 
 export default function ProductScreen(props) {
+  const { appLanguage, setAppLanguage } = useAppLanguageContext();
+  const translationLabels = useRenderTranslationLabel();
+
   const [qty, setQty] = useState(1);
   const productDetails = useSelector((state) => state.productDetails);
   const { loading, error, product } = productDetails;
@@ -31,6 +36,7 @@ export default function ProductScreen(props) {
       ) : (
         <div className="single-product">
           <i className="arrow fas fa-arrow-left"></i>
+
           <Link to="/">Back to result</Link>
           <div className="single-product-card row d-flex justify-content-center">
             <div className="col-8 col-md-4">
