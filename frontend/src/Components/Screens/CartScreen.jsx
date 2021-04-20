@@ -28,7 +28,7 @@ function CartScreen(props) {
   };
   return (
     <div className="row cart-container d-flex justify-content-between">
-      <div className="col-6">
+      <div className="col-lg-6 col-12 ">
         <h1>{translationLabels.renderLabel("shopping_cart")}</h1>
         {cartItems.length === 0 ? (
           <span>
@@ -77,29 +77,27 @@ function CartScreen(props) {
           </ul>
         )}
       </div>
-      <div className="col-4">
-        <div className="row total">
-          <ul>
-            <li>
-              <h2>
-                {translationLabels.renderLabel("subtotal")} (
-                {cartItems.reduce((a, c) => a + c.qty, 0)}{" "}
-                {translationLabels.renderLabel("item")}) : $
-                {cartItems.reduce((a, c) => a + c.price * c.qty, 0)}
-              </h2>
-            </li>
-            <li>
-              <button
-                type="button"
-                onClick={checkoutHandler}
-                className="primary block"
-                disabled={cartItems.length === 0}
-              >
-                {translationLabels.renderLabel("proceed_to_checkout")}
-              </button>
-            </li>
-          </ul>
-        </div>
+      <div className="col-lg-4 col-8 ">
+        <ul className="row total ">
+          <li className="col-12 d-flex justify-content-center">
+            <h2>
+              {translationLabels.renderLabel("subtotal")} (
+              {cartItems.reduce((a, c) => a + c.qty, 0)}{" "}
+              {translationLabels.renderLabel("item")}) : $
+              {cartItems.reduce((a, c) => a + c.price * c.qty, 0)}
+            </h2>
+          </li>
+          <li className="col-12 d-flex justify-content-center">
+            <button
+              type="button"
+              onClick={checkoutHandler}
+              className=""
+              disabled={cartItems.length === 0}
+            >
+              {translationLabels.renderLabel("proceed_to_checkout")}
+            </button>
+          </li>
+        </ul>
       </div>
     </div>
   );
