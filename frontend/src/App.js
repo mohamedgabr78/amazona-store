@@ -1,8 +1,9 @@
+import "./App.scss";
+import "./Components/ltr.scss";
 import React, { useState } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import HomeScreen from "./Components/Screens/HomeScreen";
 import ProductScreen from "./Components/Screens/ProductScreen";
-import "./App.scss";
 import Header from "./Components/Header/Header";
 import CartScreen from "./Components/Screens/CartScreen";
 import { AppLanguageContext } from "./context";
@@ -14,7 +15,7 @@ function App() {
   };
   return (
     <BrowserRouter>
-      <div className="App">
+      <div className={`${appLanguage === 2 ? "App" : "ltr"}`}>
         <AppLanguageContext.Provider
           value={{ setAppLanguage: setLanguage, appLanguage }}
         >

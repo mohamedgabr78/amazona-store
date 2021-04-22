@@ -1,17 +1,7 @@
 .ltr {
-  .p-toast {
-    direction: ltr !important;
-
-    .app {
-      .header {
-        .header-container {
-          .routes {
-            a {
-              color: cadetblue;
-            }
-          }
-        }
-      }
+  header {
+    .header-container {
+      background-color: cadetblue;
     }
   }
 }
