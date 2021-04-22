@@ -7,6 +7,7 @@ import ProductScreen from "./Components/Screens/ProductScreen";
 import Header from "./Components/Header/Header";
 import CartScreen from "./Components/Screens/CartScreen";
 import { AppLanguageContext } from "./context";
+import Login from "./Components/Screens/Login";
 
 function App() {
   const [appLanguage, setAppLanguage] = useState(2);
@@ -26,6 +27,7 @@ function App() {
             <Route path="/product/:id" component={ProductScreen}></Route>
             <Route path="/" component={HomeScreen} exact></Route>
             <Route path="/cart/:id?" component={CartScreen} exact></Route>
+            <Route path="/login" component={Login} />
           </main>
         </AppLanguageContext.Provider>
         <footer className="row d-flex justify-content-center align-items-center">
